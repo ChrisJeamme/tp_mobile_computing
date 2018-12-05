@@ -1,6 +1,7 @@
 package com.example.chris.tp1mobilecomputing;
 
 import android.content.Intent;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -11,6 +12,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     TextView textViewName;
     Button buttonNext;
+    static final private int FORM_RESULT = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -38,8 +40,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.activity_main_button_next :
                 Intent intent;
                 intent = new Intent(this, FormActivity.class);
-                startActivity(intent);
+                startActivityForResult(intent, FORM_RESULT);
                 break;
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == 1)
+        {
+            if(resultCode == RESULT_OK && data.getExtras() != null)
+            {
+                Bundle args = data.getExtras();
+                String username = args.getString("USERNAME");
+                textViewName.setText(username);
+
+            }
         }
     }
 }

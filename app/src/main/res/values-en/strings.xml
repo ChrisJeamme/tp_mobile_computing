@@ -2,5 +2,6 @@
 <resources>
     <string name="app_name">TP1 Mobile Computing</string>
     <string name="activity_main_button_next">Next</string>
-    <string name="activity_form_edittext_name">Validate</string>
+    <string name="activity_form_edittext_name">Type your text</string>
+    <string name="activity_form_button_validate">Validate</string>
 </resources>
