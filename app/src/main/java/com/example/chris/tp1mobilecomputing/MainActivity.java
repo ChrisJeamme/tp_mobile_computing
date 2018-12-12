@@ -40,10 +40,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.activity_main_button_next :
                 Intent intent;
                 intent = new Intent(this, FormActivity.class);
-                startActivityForResult(intent, FORM_RESULT);
+                startActivity(intent);
                 break;
         }
     }
+
+    @Override
+    protected void onResume()
+    {
+        super.onResume();
+
+        String username = DataManager.getInstance().getName();
+        if(username != null)
+            textViewName.setText(username);
+    }
+
+/*  METHODE BUNDLE
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -58,5 +70,5 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             }
         }
-    }
+    }*/
 }
