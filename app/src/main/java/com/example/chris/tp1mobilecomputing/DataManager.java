@@ -1,12 +1,18 @@
 package com.example.chris.tp1mobilecomputing;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class DataManager
 {
     private static DataManager INSTANCE;
 
-    private String name;
+    private List<String> nameList;
 
-    private DataManager(){}
+    private DataManager()
+    {
+        nameList = new ArrayList<>();
+    }
 
     public static DataManager getInstance()
     {
@@ -18,13 +24,18 @@ public class DataManager
         return INSTANCE;
     }
 
-    public String getName()
+    public List<String> getName()
     {
-        return name;
+        return nameList;
     }
 
-    public void setName(String name)
+    public void setName(List<String> name)
     {
-        this.name = name;
+        this.nameList = name;
+    }
+
+    public void addName(String name)
+    {
+        this.nameList.add(name);
     }
 }
